@@ -2,6 +2,10 @@
 #include <algorithm>
 
 int cms::centered_menu(std::string title, std::vector<std::string> options){
+    //disable echo and cursor
+    noecho();
+    curs_set(FALSE);
+
     //method variables
     int option_selected = 0, menux = COLS/2, menuy = LINES/2;
     ITEM** items;
