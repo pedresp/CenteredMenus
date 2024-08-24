@@ -26,7 +26,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     set_menu_sub(my_menu, derwin(menu_window, menuy - 3, menux - 1, 3, 1));
 
     set_menu_mark(my_menu, "");
-    mvwprintw(menu_window, 1, menux/2, "MY MENU");
+    mvwprintw(menu_window, 1, menux/2 - title.size()/2, "%s", title.c_str());
 
     post_menu(my_menu);
     refresh();
