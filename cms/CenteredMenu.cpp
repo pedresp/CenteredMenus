@@ -12,7 +12,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     MENU* my_menu;
     WINDOW* menu_window;
 
-    //items creation
+    //items and menu creation
     items = new ITEM*[options.size() + 1];
     for (int i = 0; i < (int)options.size(); i++){
         items[i] = new_item(options[i].c_str(), "");
@@ -26,6 +26,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     menu_window = newwin(menuy, menux, menuy/2, menux/2);
     keypad(menu_window, TRUE);
 
+    //setting menu
     set_menu_win(my_menu, menu_window);
     set_menu_sub(my_menu, derwin(menu_window, menuy - 3, menux - 1, 3, 1));
 
@@ -35,6 +36,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     post_menu(my_menu);
     refresh();
 
+    // menu's main loop
     int c;
     while ((c = wgetch(menu_window)) != 27)
     {
@@ -52,6 +54,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
         wrefresh(menu_window);
     }
     
+    //free resources
     delwin(menu_window);
     unpost_menu(my_menu);
     free_menu(my_menu);
