@@ -8,7 +8,7 @@
 #include <vector>
 
 namespace cms {
-int centered_menu(std::string title, std::vector<std::string> options);
+int centered_menu(const std::string& title, const std::vector<std::string>& options);
 }
 
 #endif

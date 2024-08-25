@@ -1,7 +1,7 @@
 #include "CenteredMenu.h"
 #include <algorithm>
 
-char* centered_string(int screen_x, std::string& string){
+char* centered_string(int screen_x, const std::string& string){
     char* centered_string = new char[screen_x + 1];
     int starting_point = screen_x/2 - string.size()/2; 
 
@@ -21,7 +21,7 @@ char* centered_string(int screen_x, std::string& string){
     return centered_string;
 }
 
-int cms::centered_menu(std::string title, std::vector<std::string> options){
+int cms::centered_menu(const std::string& title, const std::vector<std::string>& options){
     //disable echo and cursor
     noecho();
     curs_set(FALSE);
