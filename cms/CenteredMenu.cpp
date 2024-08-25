@@ -31,7 +31,7 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
     bool pressed_enter = false;
     ITEM** items;
     MENU* my_menu;
-    WINDOW* menu_window;
+    WINDOW* menu_window, *menu_subwindow;
     std::vector<char*> centered_cstrings;
 
     //items and menu creation
@@ -43,16 +43,18 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
     items[options.size()] = (ITEM*)NULL;
     my_menu = new_menu((ITEM**)items);
     
-    mvprintw(LINES - 1, 0, "Prees ESC to Exit");
+    //mvprintw(LINES - 1, 0, "Prees ESC to Exit");
 
     //window creation
     menu_window = newwin(menuy, menux, menuy/2, menux/2);
+    werase(menu_window);
     box(menu_window, 0, 0);
     keypad(menu_window, TRUE);
+    menu_subwindow = derwin(menu_window, submenuy, submenux, 3, 1);
 
     //setting menu
     set_menu_win(my_menu, menu_window);
-    set_menu_sub(my_menu, derwin(menu_window, submenuy, submenux, 3, 1));
+    set_menu_sub(my_menu, menu_subwindow);
     set_menu_format(my_menu, submenuy, 1);
 
     set_menu_mark(my_menu, "");
@@ -85,6 +87,12 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
         }
         wrefresh(menu_window);
     }
+    
+    //erase window content
+    werase(menu_window);
+    werase(menu_subwindow);
+    wrefresh(menu_window);
+    wrefresh(menu_subwindow);
     
     //free resources
     delwin(menu_window);
