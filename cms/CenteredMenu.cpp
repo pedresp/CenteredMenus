@@ -28,6 +28,7 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
 
     //method variables
     int option_selected = 0, menux = COLS/2, menuy = LINES/2, submenux = menux - 2, submenuy = menuy - 4;
+    bool pressed_enter = false;
     ITEM** items;
     MENU* my_menu;
     WINDOW* menu_window;
@@ -62,16 +63,23 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
 
     // menu's main loop
     int c;
-    while ((c = wgetch(menu_window)) != 27)
+    while (!pressed_enter && (c = wgetch(menu_window)) != 27)
     {
         switch (c)
         {
         case KEY_DOWN:
+            if (option_selected != (int)options.size() - 1)
+                ++option_selected;
             menu_driver(my_menu, REQ_DOWN_ITEM);
             break;
         case KEY_UP:
+            if (option_selected)
+                --option_selected;
             menu_driver(my_menu, REQ_UP_ITEM);
             break;
+        case 10:
+            pressed_enter = true;
+            break;            
         default:
             break;
         }
