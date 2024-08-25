@@ -52,6 +52,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     //setting menu
     set_menu_win(my_menu, menu_window);
     set_menu_sub(my_menu, derwin(menu_window, submenuy, submenux, 3, 1));
+    set_menu_format(my_menu, submenuy, 1);
 
     set_menu_mark(my_menu, "");
     mvwprintw(menu_window, 1, menux/2 - title.size()/2, "%s", title.c_str());
