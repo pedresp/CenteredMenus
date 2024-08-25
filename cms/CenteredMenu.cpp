@@ -27,7 +27,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     curs_set(FALSE);
 
     //method variables
-    int option_selected = 0, menux = COLS/2, menuy = LINES/2;
+    int option_selected = 0, menux = COLS/2, menuy = LINES/2, submenux = menux - 2, submenuy = menuy - 4;
     ITEM** items;
     MENU* my_menu;
     WINDOW* menu_window;
@@ -36,7 +36,7 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
     //items and menu creation
     items = new ITEM*[options.size() + 1];
     for (int i = 0; i < (int)options.size(); i++){
-        centered_cstrings.push_back(centered_string(menux, options[i]));
+        centered_cstrings.push_back(centered_string(submenux, options[i]));
         items[i] = new_item(centered_cstrings.back(), "");
     }
     items[options.size()] = (ITEM*)NULL;
@@ -46,11 +46,12 @@ int cms::centered_menu(std::string title, std::vector<std::string> options){
 
     //window creation
     menu_window = newwin(menuy, menux, menuy/2, menux/2);
+    box(menu_window, 0, 0);
     keypad(menu_window, TRUE);
 
     //setting menu
     set_menu_win(my_menu, menu_window);
-    set_menu_sub(my_menu, derwin(menu_window, menuy - 3, menux, 3, 0));
+    set_menu_sub(my_menu, derwin(menu_window, submenuy, submenux, 3, 1));
 
     set_menu_mark(my_menu, "");
     mvwprintw(menu_window, 1, menux/2 - title.size()/2, "%s", title.c_str());
