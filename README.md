@@ -22,7 +22,7 @@ int cms::centered_menu(const std::string& title, const std::vector<std::string>&
 
 #### Return value
 
-- Index of the option selected 
+- Index of the option selected or -1 in case no option was selected 
 
 ### Examples
 
