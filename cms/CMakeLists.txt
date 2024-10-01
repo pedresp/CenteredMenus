@@ -16,4 +16,4 @@ else()
 endif()
 
 target_include_directories(cms PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(cms PUBLIC menu ncursesw)
+target_link_libraries(cms PUBLIC menu ${CURSES_LIBRARIES})
