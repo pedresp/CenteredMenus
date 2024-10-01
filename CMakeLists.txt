@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(CMS VERSION 1.0)
+project(TEST VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
@@ -10,7 +10,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+#set(USE_GCC_VERSION OFF)
+
 add_subdirectory(cms)
-add_executable(main main.cpp)
+add_executable(main main.c)
 
 target_link_libraries(main PUBLIC cms)

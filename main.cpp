@@ -1,4 +1,4 @@
-#include "CenteredMenu.h"
+#include "CenteredMenu.hpp"
 #include <ncurses.h>
 
 int main()
