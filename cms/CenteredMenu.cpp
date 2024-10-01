@@ -1,4 +1,4 @@
-#include "CenteredMenu.h"
+#include "CenteredMenu.hpp"
 #include <algorithm>
 
 char* centered_string(int screen_x, const std::string& string){
