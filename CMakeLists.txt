@@ -11,6 +11,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 #set(USE_GCC_VERSION OFF)
+#set(USE_CMS_WCHAR ON)
 
 add_subdirectory(cms)
 add_executable(main main.c)
