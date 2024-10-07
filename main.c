@@ -1,7 +1,7 @@
 #include "CenteredMenu.h"
 #include <locale.h>
 
-int main(int argc, char const *argv[])
+int main()
 {
     setlocale(LC_ALL, "en_US.UTF-8");
 
@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     options[1] = ob;
     options[2] = oc;
 
-    int option_selected = centered_menu("CENTERED MENU", options, 3);
+    int option_selected = centered_menu("CENTERED MENU", (const char**)options, 3);
 
     mvprintw(LINES/2, COLS/2, "%d", option_selected);
     getch();
