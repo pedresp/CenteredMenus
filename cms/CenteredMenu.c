@@ -17,7 +17,7 @@ int centered_menu(char* title, const char** options, int options_size){
     //std::vector<char*> centered_cstrings;
 
     //items and menu creation
-    items = (ITEM**)malloc(sizeof(ITEM*)*options_size + 1);
+    items = (ITEM**)malloc(sizeof(ITEM*)*(options_size + 1));
     for (int i = 0; i < options_size; i++){
         //centered_cstrings.push_back(centered_string(submenux, options[i]));
         items[i] = new_item(options[i], "");
